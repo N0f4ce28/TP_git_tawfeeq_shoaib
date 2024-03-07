@@ -1,27 +1,47 @@
-import requests
-import json
+class Dictionary:
+    def _init_(self):
+        self.words = {}
 
-# Replace these with your own values
-owner = 'N0f4ce28'
-repo = 'TP_git_Tawfeeq_Shoaib'
-token = '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'
+    def add_word(self, key, value):
+        if key in self.words:
+            print(f"The key '{key}' already exists in the dictionary.")
+        else:
+            self.words[key] = value
+            print(f"The word '{key}' has been added to the dictionary.")
 
-# Define the new task data
-new_task = {
-    'title': 'New Task Title',
-    'body': 'This is the description of the new task.',
-    'labels': ['bug', 'enhancement']  # Optional: Add labels to the task
-}
+    def update_word(self, key, new_value):
+        if key in self.words:
+            self.words[key] = new_value
+            print(f"The word '{key}' has been updated in the dictionary.")
+        else:
+            print(f"The key '{key}' does not exist in the dictionary.")
 
-# Create the new task
-url = f'https://api.github.com/repos/{owner}/{repo}/issues'
-headers = {'Authorization': f'token {token}'}
-response = requests.post(url, headers=headers, data=json.dumps(new_task))
+    def remove_word(self, key):
+        if key in self.words:
+            del self.words[key]
+            print(f"The word '{key}' has been removed from the dictionary.")
+        else:
+            print(f"The key '{key}' does not exist in the dictionary.")
 
-# Check if the task was created successfully
-if response.status_code == 201:
-    print('Task created successfully!')
-    print(response.json())
-else:
-    print('Failed to create task:')
-    print(response.json())
+    def display_words(self):
+        print("Current words in the dictionary:")
+        for key, value in self.words.items():
+            print(f"{key}: {value}")
+
+
+# Create a Dictionary object
+my_dict = Dictionary()
+
+# Add words to the dictionary
+my_dict.add_word('apple', 'A fruit')
+my_dict.add_word('banana', 'A yellow fruit')
+my_dict.add_word('orange', 'An orange fruit')
+
+# Update a word in the dictionary
+my_dict.update_word('banana', 'A yellow fruit with a long tail')
+
+# Remove a word from the dictionary
+my_dict.remove_word('orange')
+
+# Display the words in the dictionary
+my_dict.display_words()
