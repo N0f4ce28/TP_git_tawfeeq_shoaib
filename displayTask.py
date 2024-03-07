@@ -1,6 +1,6 @@
-# dataTask.py
+# taskTool.py
 
-from dataTool import *
+from taskTool import *
 
 def main():
     choix = input("Que souhaitez-vous faire? (1: Charger une liste de tâches, 2: Créer une liste de tâches): ")
