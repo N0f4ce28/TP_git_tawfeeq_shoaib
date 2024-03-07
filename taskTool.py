@@ -44,3 +44,35 @@ def mark_task_complete(tasks, task):
 tasks = {"Buy groceries": False, "Clean the kitchen": True}
 mark_task_complete(tasks, "Buy groceries")
 print(tasks)
+
+# taskDisplay.py
+
+def main():
+    print("Welcome to the task manager!")
+    while True:
+        print("\nWhat would you like to do?")
+        print("1. Load tasks")
+        print("2. Create new tasks")
+        choice = input("Enter 1 or 2: ")
+        if choice == "1":
+            filename = input("Enter the filename of the tasks JSON file: ")
+            if os.path.isfile(filename):
+                tasks = load_from_json(filename)
+                display_tasks(tasks)
+            else:
+                print(f"File '{filename}' does not exist.")
+        elif choice == "2":
+            tasks = {}
+            while True:
+                print("\nWhat would you like to do?")
+                print("1. Add a task")
+                print("2. Remove a task")
+                print("3. Mark a task as complete")
+                print("4. Save tasks and exit")
+                choice = input("Enter 1, 2, 3, or 4: ")
+                if choice == "1":
+                    task = input("Enter a task to add: ")
+                    add_task(tasks, task)
+                    display_tasks(tasks)
+                elif choice == "2":
+
