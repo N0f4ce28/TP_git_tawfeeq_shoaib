@@ -1,47 +1,46 @@
-class Dictionary:
-    def _init_(self):
-        self.words = {}
+# taskTool.py
+#Add words to dictionary
 
-    def add_word(self, key, value):
-        if key in self.words:
-            print(f"The key '{key}' already exists in the dictionary.")
-        else:
-            self.words[key] = value
-            print(f"The word '{key}' has been added to the dictionary.")
+def add_task(tasks, task):
+    """Add a new task to the tasks dictionary."""
+    if task in tasks:
+        print(f"Task '{task}' already exists.")
+    else:
+        tasks[task] = False
+        print(f"Task '{task}' has been added.")
 
-    def update_word(self, key, new_value):
-        if key in self.words:
-            self.words[key] = new_value
-            print(f"The word '{key}' has been updated in the dictionary.")
-        else:
-            print(f"The key '{key}' does not exist in the dictionary.")
+# Example usage:
+tasks = {}
+add_task(tasks, "Buy groceries")
+add_task(tasks, "Clean the kitchen")
+print(tasks)
 
-    def remove_word(self, key):
-        if key in self.words:
-            del self.words[key]
-            print(f"The word '{key}' has been removed from the dictionary.")
-        else:
-            print(f"The key '{key}' does not exist in the dictionary.")
+#Remove words from dictionary
 
-    def display_words(self):
-        print("Current words in the dictionary:")
-        for key, value in self.words.items():
-            print(f"{key}: {value}")
+def remove_task(tasks, task):
+    """Remove a task from the tasks dictionary."""
+    if task in tasks:
+        del tasks[task]
+        print(f"Task '{task}' has been removed.")
+    else:
+        print(f"Task '{task}' does not exist.")
 
+# Example usage:
+tasks = {"Buy groceries": False, "Clean the kitchen": True}
+remove_task(tasks, "Buy groceries")
+print(tasks)
 
-# Create a Dictionary object
-my_dict = Dictionary()
+#Mark words from dictionary
 
-# Add words to the dictionary
-my_dict.add_word('apple', 'A fruit')
-my_dict.add_word('banana', 'A yellow fruit')
-my_dict.add_word('orange', 'An orange fruit')
+def mark_task_complete(tasks, task):
+    """Mark a task as complete in the tasks dictionary."""
+    if task in tasks:
+        tasks[task] = True
+        print(f"Task '{task}' has been marked as complete.")
+    else:
+        print(f"Task '{task}' does not exist.")
 
-# Update a word in the dictionary
-my_dict.update_word('banana', 'A yellow fruit with a long tail')
-
-# Remove a word from the dictionary
-my_dict.remove_word('orange')
-
-# Display the words in the dictionary
-my_dict.display_words()
+# Example usage:
+tasks = {"Buy groceries": False, "Clean the kitchen": True}
+mark_task_complete(tasks, "Buy groceries")
+print(tasks)
